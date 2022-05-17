@@ -4,11 +4,10 @@
     </header>
 </template>
 <script>
-    export default {
-        name: 'Header'
-    }
+export default {
+    name: 'MyHeader'
+}
 </script>
 
 <style>
-    
 </style>

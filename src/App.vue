@@ -1,45 +1,60 @@
 <template>
-  <Header />
-  
+  <MyHeader />
   <div class="wrapper">
-    <TaskModule v-if="newTask" />
-    <ScheduleGrid />
-  <Button buttonText="New Task" @click="addTask"/>
+    <TaskModule @module-close-event="toggleModule" v-if="newTask" />
+    <ScheduleGrid :taskMapFromParent="taskMap" />
+    <MyButton buttonText=" New Task" @click="openModule" />
   </div>
-  
-
 </template>
 
 <script>
-import Button from './components/Button'
-import Header from './components/Header'
-import ScheduleGrid from './components/ScheduleGrid.vue'
-import TaskModule from './components/TaskModule.vue'
+import MyButton from "./components/MyButton";
+import MyHeader from "./components/MyHeader";
+import ScheduleGrid from "./components/ScheduleGrid.vue";
+import TaskModule from "./components/TaskModule.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Header,
+    MyHeader,
     ScheduleGrid,
-    Button,
-    TaskModule
+    MyButton,
+    TaskModule,
   },
-  data(){
-    return{
+  data() {
+    return {
+      taskMap: {
+        testKey: "",
+        eleven: "",
+        twelve: "",
+        thirteen: "",
+        fourteen: "",
+        fifteen: "",
+        sixteen: "",
+        seventeen: "",
+        eighteen: "",
+      },
       newTask: false,
-      
-    }
+      selectedHour: 0,
+      selectedMessage: "",
+    };
   },
-  methods:{
-    addTask(){
-      this.newTask = !this.newTask
-    }
-  }
-}
+  methods: {
+    toggleModule: function (value) {
+      let key = value.selectedHour;
+      this.taskMap[key] = value.selectedMessage;
+      this.newTask = !this.newTask;
+    },
+    openModule: function () {
+      this.newTask = true;
+    },
+  },
+};
 </script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 2em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
