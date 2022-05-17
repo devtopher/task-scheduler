@@ -1,6 +1,8 @@
 <template>
     <div>
-        <label>Choose an hour<select><option>8AM</option></select></label>
+        <label for="hour-select">Choose an hour:</label><select name="hours" id="hour-select">
+            <option value="8">8AM</option>
+            </select>
         <textarea></textarea>
         <Button buttonText="Submit New Task"  />
     </div>
