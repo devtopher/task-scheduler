@@ -1,15 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header />
+  
+  <div class="wrapper">
+    <TaskModule v-if="newTask" />
+    <ScheduleGrid />
+  <Button buttonText="New Task" @click="addTask"/>
+  </div>
+  
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Button from './components/Button'
+import Header from './components/Header'
+import ScheduleGrid from './components/ScheduleGrid.vue'
+import TaskModule from './components/TaskModule.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    ScheduleGrid,
+    Button,
+    TaskModule
+  },
+  data(){
+    return{
+      newTask: false,
+      
+    }
+  },
+  methods:{
+    addTask(){
+      this.newTask = !this.newTask
+    }
   }
 }
 </script>
@@ -22,5 +45,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
