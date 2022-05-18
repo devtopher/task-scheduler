@@ -55,6 +55,7 @@ export default {
 .module {
     display: flex;
     flex-direction: column;
+    font-family: Avenir, Helvetica, sans-serif;
     align-items: center;
     justify-content: center;
     z-index: 10;
